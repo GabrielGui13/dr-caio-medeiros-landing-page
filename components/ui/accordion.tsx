@@ -19,7 +19,7 @@ function Accordion({
   )
 }
 
-/* Cada item é um painel com borda e raio de 4px */
+/* Cada item é um painel branco, sem borda (separação por tom), raio de 4px */
 function AccordionItem({
   className,
   ...props
@@ -28,7 +28,7 @@ function AccordionItem({
     <AccordionPrimitive.Item
       data-slot="accordion-item"
       className={cn(
-        "rounded border border-border bg-surface-container-lowest",
+        "rounded bg-surface-container-lowest",
         className
       )}
       {...props}
@@ -47,7 +47,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "group/accordion-trigger flex min-h-14 flex-1 items-center justify-between gap-4 rounded px-6 py-4 text-left text-label-lg text-primary transition-colors hover:bg-surface-container-low disabled:pointer-events-none disabled:text-on-disabled",
+          "group/accordion-trigger flex min-h-14 flex-1 items-center justify-between gap-4 rounded px-6 py-4 text-left text-label-lg text-on-surface transition-colors hover:bg-surface-container-low disabled:pointer-events-none disabled:text-on-disabled",
           className
         )}
         {...props}
@@ -79,7 +79,7 @@ function AccordionContent({
     >
       <div
         className={cn(
-          "px-6 pb-6 text-body-md text-on-surface-variant [&_a]:underline [&_a]:underline-offset-4 [&_p:not(:last-child)]:mb-4",
+          "px-6 pb-6 text-body-sm text-on-surface-variant [&_a]:underline [&_a]:underline-offset-4 [&_p:not(:last-child)]:mb-4",
           className
         )}
       >

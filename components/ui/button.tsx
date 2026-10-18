@@ -16,13 +16,13 @@ const buttonVariants = cva(
           "border-transparent bg-primary text-on-primary hover:bg-primary-container active:bg-footer",
         // Secundário (contorno azul-marinho)
         secondary:
-          "border-primary bg-transparent text-primary hover:bg-surface-container-low active:bg-surface-container disabled:border-transparent",
+          "border-primary bg-surface-container-lowest text-primary hover:bg-surface-container-low active:bg-primary-fixed disabled:border-outline/40",
         // WhatsApp (o ícone vem de quem usa: <WhatsAppIcon />)
         whatsapp:
-          "border-transparent bg-secondary text-on-secondary hover:bg-on-secondary-container active:bg-on-secondary-container",
+          "border-transparent bg-secondary text-on-secondary hover:bg-[#25573F] active:bg-on-secondary-container",
         // Claro, para fundos escuros (anel de foco claro para ficar visível)
         light:
-          "border-transparent bg-primary-fixed text-primary outline-primary-fixed hover:bg-inverse-primary active:bg-inverse-primary focus-visible:outline-primary-fixed",
+          "border-transparent bg-primary-fixed text-primary outline-primary-fixed hover:bg-surface-container-lowest active:bg-on-primary-container focus-visible:outline-primary-fixed",
       },
       size: {
         default: "h-14 px-6",
@@ -79,7 +79,13 @@ function Button({
   )
 
   return (
-    <button {...common} disabled={disabled || loading} {...props}>
+    <button
+      {...common}
+      disabled={disabled}
+      {...props}
+      onClick={loading ? undefined : props.onClick}
+      tabIndex={loading ? -1 : props.tabIndex}
+    >
       {loading ? (
         icon ? (
           spinner
