@@ -9,6 +9,7 @@ export const site = {
   description:
     "Clínica geral com atendimento humanizado — no consultório, por vídeo ou na sua casa.",
   phone: "(00) 0000-0000",
+  whatsapp: "(00) 00000-0000",
   phoneHref: "tel:+550000000000",
   whatsappHref: "https://wa.me/550000000000",
   email: "contato@exemplo.com.br",
@@ -20,9 +21,9 @@ export const site = {
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Rua+Exemplo+123+Centro",
   hours: [
-    { days: "Seg. a sex.", time: "8h às 18h" },
-    { days: "Sábado", time: "8h às 12h" },
-    { days: "Domingo e feriados", time: "fechado" },
+    { kind: "clock", text: "Consultório: seg. a sex., 8h às 18h" },
+    { kind: "clock", text: "Sábado: 8h às 12h" },
+    { kind: "home", text: "Domicílio e vídeo: horário combinado" },
   ],
   year: 2026,
   privacyHref: "/privacidade",

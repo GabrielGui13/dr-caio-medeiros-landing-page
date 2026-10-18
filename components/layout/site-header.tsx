@@ -58,7 +58,7 @@ export function SiteHeader({
       aria-current={booking ? "page" : undefined}
       className={cn(
         booking &&
-          "bg-footer after:absolute after:inset-x-0 after:-bottom-px after:h-[3px] after:bg-secondary",
+          "after:absolute after:inset-x-0 after:-bottom-3 after:h-[3px] after:bg-secondary",
       )}
     >
       <Link href={site.bookingHref}>
@@ -78,7 +78,7 @@ export function SiteHeader({
       {/* Desktop */}
       <div
         className={cn(
-          "mx-auto h-[103px] max-w-[1440px] items-center justify-between px-8",
+          "mx-auto h-[103px] max-w-[1440px] items-center justify-between px-8 xl:px-24",
           showDesktop,
         )}
       >
@@ -101,7 +101,7 @@ export function SiteHeader({
                     {active && (
                       <span
                         aria-hidden="true"
-                        className="absolute inset-x-0 bottom-0 h-[3px] bg-secondary"
+                        className="absolute inset-x-0 bottom-2 h-[3px] bg-secondary"
                       />
                     )}
                   </Link>

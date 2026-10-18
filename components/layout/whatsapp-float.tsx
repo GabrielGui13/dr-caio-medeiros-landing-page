@@ -21,13 +21,17 @@ export function WhatsAppFloat({
   return (
     <a
       href={site.whatsappHref}
-      aria-label="Conversar no WhatsApp"
       className={cn(
-        "flex size-16 items-center justify-center rounded-full bg-secondary text-on-secondary shadow-ambient transition-colors hover:bg-on-secondary-container",
-        isStatic ? "relative" : "fixed right-8 bottom-8 z-40 hidden lg:flex",
+        "group flex flex-col items-center gap-1 rounded",
+        isStatic ? "relative w-fit" : "fixed right-8 bottom-8 z-40 hidden lg:flex",
       )}
     >
-      <WhatsAppIcon className="size-8" />
+      <span className="flex size-16 items-center justify-center rounded-full bg-secondary text-on-secondary shadow-ambient transition-colors group-hover:bg-on-secondary-container">
+        <WhatsAppIcon className="size-8" aria-hidden="true" />
+      </span>
+      <span className="rounded border border-white bg-on-secondary-container px-2 py-1 text-label-md text-on-secondary shadow-ambient">
+        WhatsApp
+      </span>
     </a>
   );
 }
