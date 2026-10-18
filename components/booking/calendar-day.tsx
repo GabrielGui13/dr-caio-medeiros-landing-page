@@ -63,7 +63,7 @@ export function CalendarDay({
         status === "full" &&
           "cursor-not-allowed border-transparent bg-surface-container-low text-on-surface-variant line-through",
         status === "past" &&
-          "cursor-not-allowed border-transparent bg-transparent font-normal text-on-surface-variant opacity-60",
+          "cursor-not-allowed border-transparent bg-transparent font-normal text-on-surface-variant",
         isToday && !selected && "border-2 border-primary",
         selected &&
           "border-primary bg-primary text-on-primary hover:bg-primary",
