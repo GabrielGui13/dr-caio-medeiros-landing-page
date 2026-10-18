@@ -61,21 +61,23 @@ export function CalendarDay({
         status === "available" &&
           "cursor-pointer border-outline bg-surface-container-lowest text-on-surface hover:bg-surface-container-low",
         status === "full" &&
-          "cursor-not-allowed border-transparent bg-surface-container-low text-on-surface-variant line-through",
+          "cursor-not-allowed border-transparent bg-surface-container-low text-on-surface-variant",
         status === "past" &&
           "cursor-not-allowed border-transparent bg-transparent font-normal text-on-surface-variant",
-        isToday && !selected && "border-2 border-primary",
+        isToday &&
+          !selected &&
+          "border-2 border-secondary bg-surface-container-lowest text-secondary",
         selected &&
           "border-primary bg-primary text-on-primary hover:bg-primary",
         className,
       )}
       {...props}
     >
-      <span>{date.getDate()}</span>
+      <span className={cn(status === "full" && "line-through")}>
+        {date.getDate()}
+      </span>
       {isToday ? (
-        <span className="text-body-sm leading-none font-semibold no-underline">
-          Hoje
-        </span>
+        <span className="text-label-md leading-none font-bold">hoje</span>
       ) : null}
     </button>
   );

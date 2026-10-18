@@ -12,7 +12,7 @@ type TimeSlotProps = Omit<
 > & {
   /** Ex.: "09:00" */
   value: string;
-  /** Ocupado: riscado, com o texto "ocupado", desativado */
+  /** Ocupado: sem fundo, com o texto "ocupado", desativado */
   busy?: boolean;
 };
 
@@ -26,16 +26,16 @@ export function TimeSlot({ value, busy, className, ...props }: TimeSlotProps) {
         "group flex h-14 w-full cursor-pointer items-center justify-center gap-2 rounded border border-outline bg-surface-container-lowest text-label-lg text-on-surface transition-colors",
         "hover:bg-surface-container-low",
         "data-[state=checked]:border-primary data-[state=checked]:bg-primary data-[state=checked]:text-on-primary",
-        "disabled:cursor-not-allowed disabled:border-transparent disabled:bg-surface-container-low disabled:text-on-surface-variant",
+        "disabled:cursor-not-allowed disabled:border-transparent disabled:bg-transparent disabled:text-on-surface-variant",
         className,
       )}
       {...props}
     >
-      <span className={cn(busy && "line-through")}>{value}</span>
-      {busy ? <span className="text-body-sm font-normal">ocupado</span> : null}
       <RadioGroup.Indicator asChild>
         <IconCheck aria-hidden className="size-5" />
       </RadioGroup.Indicator>
+      <span className={cn(busy && "text-body-md font-normal")}>{value}</span>
+      {busy ? <span className="text-body-sm font-normal">ocupado</span> : null}
     </RadioGroup.Item>
   );
 }

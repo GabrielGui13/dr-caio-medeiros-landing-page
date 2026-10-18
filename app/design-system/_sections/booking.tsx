@@ -17,6 +17,7 @@ import {
   IconCalendar,
   IconClinic,
   IconHome,
+  IconStethoscope,
   IconUser,
   IconVideo,
 } from "@/components/icons";
@@ -73,21 +74,21 @@ export function BookingSection() {
             icon={<IconHome />}
             title="Na sua casa"
             description="O médico vai até você."
-            price="R$ 000"
+            price="R$ 000 · consulta"
           />
           <ServiceOption
             value="video"
             icon={<IconVideo />}
             title="Por vídeo (telemedicina)"
             description="Consulta online, de onde você estiver."
-            price="R$ 000"
+            price="R$ 000 · consulta"
           />
           <ServiceOption
             value="clinica"
             icon={<IconClinic />}
             title="No consultório"
             description="Atendimento presencial na clínica."
-            price="R$ 000"
+            price="R$ 000 · consulta"
           />
         </ServiceOptionGroup>
         <Caption>
@@ -198,13 +199,13 @@ export function BookingSection() {
 
       <Block title="Etapa">
         <Stepper aria-label="Etapas do agendamento">
-          <Step status="done" title="Atendimento" icon={<IconUser />} />
+          <Step status="done" title="1. Tipo de atendimento" icon={<IconStethoscope />} />
           <Step
             status="current"
-            title="Data e horário"
+            title="2. Data e horário"
             icon={<IconCalendar />}
           />
-          <Step status="upcoming" title="Seus dados" icon={<IconUser />} />
+          <Step status="upcoming" title="3. Seus dados" icon={<IconUser />} />
         </Stepper>
         <Caption>Concluída, Atual e Futura.</Caption>
       </Block>

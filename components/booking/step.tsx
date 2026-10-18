@@ -11,7 +11,7 @@ type StepProps = {
   className?: string;
 };
 
-/* Etapa do agendamento: Concluída / Atual / Futura (nunca só pela cor) */
+/* O título já inclui o número ("1. Tipo de atendimento"). Etapa do agendamento: Concluída / Atual / Futura (nunca só pela cor) */
 export function Step({ status, title, icon, className }: StepProps) {
   return (
     <li
@@ -21,7 +21,7 @@ export function Step({ status, title, icon, className }: StepProps) {
       <span
         aria-hidden
         className={cn(
-          "flex size-12 shrink-0 items-center justify-center rounded-full [&_svg]:size-6",
+          "flex size-10 shrink-0 items-center justify-center rounded [&_svg]:size-6",
           status === "done" && "bg-secondary text-on-secondary",
           status === "current" && "bg-primary text-on-primary",
           status === "upcoming" &&
@@ -33,7 +33,7 @@ export function Step({ status, title, icon, className }: StepProps) {
       <span className="flex flex-col">
         <span
           className={cn(
-            "text-label-lg",
+            "text-body-md",
             status === "current" && "font-bold text-primary",
             status === "done" && "text-on-surface",
             status === "upcoming" && "text-on-surface-variant",
@@ -42,14 +42,13 @@ export function Step({ status, title, icon, className }: StepProps) {
           {title}
         </span>
         {status === "done" ? (
-          <span className="text-body-sm font-semibold text-on-secondary-container">
-            Concluído
-          </span>
+          <span className="text-body-sm text-secondary">Concluído</span>
         ) : null}
         {status === "current" ? (
-          <span className="text-body-sm font-semibold text-primary">
-            Você está aqui
-          </span>
+          <span className="text-body-sm text-secondary">Você está aqui</span>
+        ) : null}
+        {status === "upcoming" ? (
+          <span className="text-body-sm text-on-surface-variant">A seguir</span>
         ) : null}
       </span>
     </li>

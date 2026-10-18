@@ -23,7 +23,10 @@ const monthFmt = new Intl.DateTimeFormat("pt-BR", {
   month: "long",
   year: "numeric",
 });
-export const formatMonth = (d: Date) => monthFmt.format(d);
+export const formatMonth = (d: Date) => {
+  const s = monthFmt.format(d);
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
 
 const sameDay = (a: Date, b: Date) =>
   a.getFullYear() === b.getFullYear() &&
@@ -123,7 +126,7 @@ export function BookingCalendar({
   return (
     <div className={cn("flex flex-col gap-4", className)}>
       {showHeading ? (
-        <h3 id={hId} className="text-headline-md text-primary capitalize">
+        <h3 id={hId} className="text-headline-md text-primary">
           {formatMonth(month)}
         </h3>
       ) : null}
