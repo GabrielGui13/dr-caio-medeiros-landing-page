@@ -1,79 +1,83 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Sem modo escuro: variante "dark" inerte (só vale sob .dark, que nunca é aplicada) */
+@custom-variant dark (&:is(.dark *));
 
 /*
- * Clinical Excellence System — design tokens.
- * Cada --color-* vira utilitário: bg-primary, text-on-surface, border-outline-variant...
+ * Design System v2 — Dr. Caio Medeiros. Fonte da verdade dos tokens.
+ * Cada --color-* vira utilitário: bg-primary, text-on-surface, border-outline...
  */
 @theme {
   /* ---------- Cores ---------- */
-  --color-surface: #f9f9ff;
-  --color-surface-dim: #d4daea;
-  --color-surface-bright: #f9f9ff;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f1f3ff;
-  --color-surface-container: #e8eeff;
-  --color-surface-container-high: #e3e8f9;
-  --color-surface-container-highest: #dde2f3;
-  --color-surface-variant: #dde2f3;
-  --color-surface-tint: #455f88;
-  --color-on-surface: #161c27;
-  --color-on-surface-variant: #43474e;
-  --color-inverse-surface: #2a303d;
-  --color-inverse-on-surface: #ecf0ff;
-  --color-outline: #74777f;
-  --color-outline-variant: #c4c6cf;
-
   --color-primary: #002045;
   --color-on-primary: #ffffff;
   --color-primary-container: #1a365d;
-  --color-on-primary-container: #86a0cd;
-  --color-inverse-primary: #adc7f7;
+  --color-on-primary-container: #b4c8ec;
   --color-primary-fixed: #d6e3ff;
-  --color-primary-fixed-dim: #adc7f7;
-  --color-on-primary-fixed: #001b3c;
-  --color-on-primary-fixed-variant: #2d476f;
+  --color-inverse-primary: #adc7f7;
 
   --color-secondary: #2c694e;
   --color-on-secondary: #ffffff;
   --color-secondary-container: #aeeecb;
-  --color-on-secondary-container: #316e52;
-  --color-secondary-fixed: #b1f0ce;
-  --color-secondary-fixed-dim: #95d4b3;
-  --color-on-secondary-fixed: #002114;
-  --color-on-secondary-fixed-variant: #0e5138;
+  --color-on-secondary-container: #0e5138;
 
-  --color-tertiary: #172328;
-  --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #2c383d;
-  --color-on-tertiary-container: #94a1a8;
-  --color-tertiary-fixed: #d8e4eb;
-  --color-tertiary-fixed-dim: #bcc8cf;
-  --color-on-tertiary-fixed: #111d22;
-  --color-on-tertiary-fixed-variant: #3c494e;
+  --color-surface: #f9f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f1f3ff;
+  --color-surface-container: #e8eeff;
+  --color-surface-container-high: #e3e8f9;
+
+  --color-on-surface: #161c27;
+  --color-on-surface-variant: #43474e;
+  --color-placeholder: #6b6f77;
+  --color-outline: #74777f; /* borda de campos */
+  --color-border: #e2e8f0; /* filetes e bordas de painéis */
+
+  --color-focus-ring: #002045;
+  --color-disabled: #e3e8f9; /* fundo */
+  --color-on-disabled: #43474e; /* texto */
 
   --color-error: #ba1a1a;
-  --color-on-error: #ffffff;
   --color-error-container: #ffdad6;
-  --color-on-error-container: #93000a;
 
-  --color-background: #f9f9ff;
-  --color-on-background: #161c27;
+  --color-footer: #001b3c;
+  --color-on-footer-muted: #c9d6ef;
 
-  /* Extras da paleta visual (imagem): "Oxygen Blue" para fundos de seção e Neutral */
-  --color-oxygen: #ebf8ff;
-  --color-neutral: #1a202c;
-  --color-border: #e2e8f0;
+  /* ---------- Aliases do shadcn → tokens do DS ---------- */
+  --color-background: var(--color-surface);
+  --color-foreground: var(--color-on-surface);
+  --color-card: var(--color-surface-container-lowest);
+  --color-card-foreground: var(--color-on-surface);
+  --color-popover: var(--color-surface-container-lowest);
+  --color-popover-foreground: var(--color-on-surface);
+  --color-primary-foreground: var(--color-on-primary);
+  --color-secondary-foreground: var(--color-on-secondary);
+  --color-muted: var(--color-surface-container-low);
+  --color-muted-foreground: var(--color-on-surface-variant);
+  --color-accent: var(--color-surface-container-low);
+  --color-accent-foreground: var(--color-primary);
+  --color-destructive: var(--color-error);
+  --color-input: var(--color-outline);
+  --color-ring: var(--color-focus-ring);
 
   /* ---------- Tipografia ---------- */
   --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
 
-  --text-display: 3rem;
-  --text-display--line-height: 1.2;
+  --text-display: 3.75rem;
+  --text-display--line-height: 1.1;
   --text-display--letter-spacing: -0.02em;
   --text-display--font-weight: 700;
 
+  --text-display-mobile: 2.5rem;
+  --text-display-mobile--line-height: 1.1;
+  --text-display-mobile--font-weight: 700;
+
   --text-headline-lg: 2rem;
   --text-headline-lg--line-height: 1.3;
+  --text-headline-lg--letter-spacing: -0.01em;
   --text-headline-lg--font-weight: 700;
 
   --text-headline-lg-mobile: 1.75rem;
@@ -84,6 +88,10 @@
   --text-headline-md--line-height: 1.4;
   --text-headline-md--font-weight: 600;
 
+  --text-headline-md-mobile: 1.375rem;
+  --text-headline-md-mobile--line-height: 1.4;
+  --text-headline-md-mobile--font-weight: 600;
+
   --text-body-lg: 1.25rem;
   --text-body-lg--line-height: 1.6;
   --text-body-lg--font-weight: 400;
@@ -92,22 +100,35 @@
   --text-body-md--line-height: 1.6;
   --text-body-md--font-weight: 400;
 
+  --text-body-sm: 1rem; /* mínimo permitido */
+  --text-body-sm--line-height: 1.5;
+  --text-body-sm--font-weight: 400;
+
   --text-label-lg: 1.125rem;
   --text-label-lg--line-height: 1.2;
   --text-label-lg--font-weight: 600;
 
+  --text-label-md: 1rem;
+  --text-label-md--line-height: 1.2;
+  --text-label-md--font-weight: 600;
+
   /* ---------- Raios ---------- */
+  /* Padrão 4px; rounded-sm/md/lg/xl (usados pelo shadcn) também resolvem para 4px */
+  --radius: 0.25rem;
+  --radius-xs: 0.125rem; /* radius-sm do DS (2px) */
   --radius-sm: 0.25rem;
-  --radius: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.25rem;
+  --radius-2xl: 0.25rem;
+  --radius-3xl: 0.25rem;
+  --radius-4xl: 0.25rem;
 
   /* ---------- Espaçamento ---------- */
   --spacing-gutter: 24px;
   --spacing-margin: 32px;
 
-  /* ---------- Sombra (único nível permitido) ---------- */
+  /* ---------- Sombra (só para elementos flutuantes) ---------- */
   --shadow-ambient: 0px 4px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -117,8 +138,8 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-on-background);
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
     font-family: var(--font-sans);
     font-size: 1.125rem; /* corpo base 18px (nenhum texto abaixo de 16px) */
     line-height: 1.6;
@@ -133,7 +154,23 @@
 
   /* Foco bem visível, para acessibilidade */
   :focus-visible {
-    outline: 3px solid var(--color-primary-container);
+    outline: 3px solid var(--color-focus-ring);
     outline-offset: 2px;
+  }
+
+  /* Respeita quem prefere menos movimento */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
